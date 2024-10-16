@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitud de Empleo</title>
+</head>
+<body>
+
+    <a href="index.html">Inicio</a>
+    <a href="SoliDeEmpleo.html">Solicitud de empleo</a>
+    <a href="formularios.html">formularios</a>
+
+    <h1>Solicitud de Empleo</h1>
+
+    <form id="employmentApplicationForm" onsubmit="return validarFormulario()">
+        <!-- Información Personal -->
+        <fieldset>
+            <legend>Información Personal</legend>
+
+            <!-- Nombre completo -->
+            <label for="nombre">Nombre completo:</label>
+            <input type="text" id="nombre" name="nombre" required>
+            <br><br>
+
+            <!-- Estado civil -->
+             <label for="estado_civil">Estado civil:</label>
+             <select id="estado_civil" name="Estado civil" required>
+                <option value="Soltero">Soltero</option>
+                <option value="Casado">Casado</option>
+                <option value="Divorciado">Divorciado</option>
+                <option value="viudo">Viudo</option>
+            </select>
+            <br><br>
+
+            <!-- Fecha de nacimiento -->
+            <label for="fecha_nacimiento">Fecha de nacimiento:</label>
+            <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
+            <br><br>
+
+            <!-- Género -->
+            <label>Género:</label><br>
+            <input type="radio" id="masculino" name="genero" value="Masculino" required>
+            <label for="masculino">Masculino</label><br>
+            <input type="radio" id="femenino" name="genero" value="Femenino" required>
+            <label for="femenino">Femenino</label><br>
+            <input type="radio" id="otro" name="genero" value="Otro" required>
+            <label for="otro">Otro</label><br><br>
+        </fieldset>
+
+        <!-- Datos de Contacto -->
+        <fieldset>
+            <legend>Datos de Contacto</legend>
+
+            <!-- Teléfono -->
+            <label for="telefono">Teléfono:</label>
+            <input type="tel" id="telefono" name="telefono" required>
+            <br><br>
+
+            <!-- Correo electrónico -->
+            <label for="email">Correo electrónico:</label>
+            <input type="email" id="email" name="email" required>
+            <br><br>
+
+            <!-- Domicilio -->
+            <label for="direccion">Dirección:</label>
+            <input type="text" id="direccion" name="direccion" required>
+            <br><br>
+        </fieldset>
+
+        <!-- Educación -->
+        <fieldset>
+            <legend>Educación</legend>
+
+            <!-- Nivel educativo -->
+            <label for="educacion">Último nivel educativo alcanzado:</label>
+            <select id="educacion" name="educacion" required>
+                <option value="">Selecciona una opción</option>
+                <option value="Secundaria">Secundaria</option>
+                <option value="Preparatoria">Preparatoria</option>
+                <option value="Licenciatura">Licenciatura</option>
+                <option value="Posgrado">Posgrado</option>
+            </select>
+            <br><br>
+
+            <!-- Institución educativa -->
+            <label for="institucion">Institución educativa:</label>
+            <input type="text" id="institucion" name="institucion" required>
+            <br><br>
+
+            <!-- Año de finalización -->
+            <label for="anio_finalizacion">Año de finalización:</label>
+            <input type="number" id="anio_finalizacion" name="anio_finalizacion" min="1900" max="2024" required>
+            <br><br>
+        </fieldset>
+
+        <!-- Experiencia Laboral -->
+        <fieldset>
+            <legend>Experiencia Laboral</legend>
+
+            <!-- Empresa -->
+            <label for="empresa">Última empresa donde trabajaste:</label>
+            <input type="text" id="empresa" name="empresa" required>
+            <br><br>
+
+            <!-- Puesto -->
+            <label for="puesto">Último puesto:</label>
+            <input type="text" id="puesto" name="puesto" required>
+            <br><br>
+
+            <!-- Tiempo de trabajo -->
+            <label for="tiempo_trabajo">Tiempo en la empresa:</label>
+            <input type="text" id="tiempo_trabajo" name="tiempo_trabajo" required>
+            <br><br>
+
+            <!-- Descripción de actividades -->
+            <label for="actividades">Descripción de actividades:</label><br>
+            <textarea id="actividades" name="actividades" rows="4" cols="50" required></textarea>
+            <br><br>
+        </fieldset>
+
+        <!-- Habilidades -->
+        <fieldset>
+            <legend>Habilidades</legend>
+
+            <!-- Habilidades principales -->
+            <label for="habilidades">Escribe tus habilidades principales:</label><br>
+            <textarea id="habilidades" name="habilidades" rows="4" cols="50" required></textarea>
+            <br><br>
+        </fieldset>
+
+        <!-- Referencias -->
+        <fieldset>
+            <legend>Referencias</legend>
+
+            <!-- Nombre de la referencia -->
+            <label for="referencia_nombre">Nombre de referencia:</label>
+            <input type="text" id="referencia_nombre" name="referencia_nombre" required>
+            <br><br>
+
+            <!-- Teléfono de la referencia -->
+            <label for="referencia_telefono">Teléfono de la referencia:</label>
+            <input type="tel" id="referencia_telefono" name="referencia_telefono" required>
+            <br><br>
+
+            <!-- Relación -->
+            <label for="relacion">Relación:</label>
+            <input type="text" id="relacion" name="relacion" required>
+            <br><br>
+        </fieldset>
+
+        <button type="submit">Enviar Solicitud</button>
+    </form>
+
+    <script>
+        function validarFormulario() {
+            const nombre = document.getElementById("nombre").value;
+            const genero = document.querySelector('input[name="genero"]:checked');
+            const telefono = document.getElementById("telefono").value;
+            const email = document.getElementById("email").value;
+            const direccion = document.getElementById("direccion").value;
+            const educacion = document.getElementById("educacion").value;
+            const institucion = document.getElementById("institucion").value;
+            const empresa = document.getElementById("empresa").value;
+            const puesto = document.getElementById("puesto").value;
+
+            if (!nombre || !genero || !telefono || !email || !direccion || !educacion || !institucion || !empresa || !puesto) {
+                alert("Por favor, rellena todos los campos.");
+                return false;
+            }
+
+            alert("Solicitud enviada correctamente.");
+            return true;
+        }
+    </script>
+</body>
+</html>
